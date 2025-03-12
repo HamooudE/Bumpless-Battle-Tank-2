@@ -286,8 +286,8 @@ class Game():
 
         #Pour le joueur 1 : zqd
         if pygame.sprite.collide_mask(self.player1,self.obstacle) is None :                 #Si tank1 pas en collision avec obstacle
-            self.player1.rotate(pygame.K_a,pygame.K_d)                                      #Le tank peut tourner
-            self.player1.move(pygame.K_w)                                                   #tank1 peut bouger
+            self.player1.rotate(LEFT1, RIGHT1)                                      #Le tank peut tourner
+            self.player1.move(FORWARD1)                                                   #tank1 peut bouger
         else :                                                                              #sinon (si tank1 en collision avec obstacle)
             self.player1.bounce_force = VITESSE_INITIAL_BOUNCE
             self.choc1 = True                                                               #le tank1 rebondi
@@ -307,8 +307,8 @@ class Game():
 
         #Pour le joueur 2 : flèches
         if pygame.sprite.collide_mask(self.player2,self.obstacle) is None :                 #Si tank2 pas en collision avec obstacle
-            self.player2.rotate(pygame.K_LEFT,pygame.K_RIGHT)                               #Le tank2 peut tourner
-            self.player2.move(pygame.K_UP)                                                  #le tank2 peut avance
+            self.player2.rotate(LEFT2,RIGHT2)                               #Le tank2 peut tourner
+            self.player2.move(FORWARD2)                                                  #le tank2 peut avance
         else :                                                                              #Sinon (si tank2 en collision avec obstacle)
             self.player2.bounce_force = VITESSE_INITIAL_BOUNCE
             self.choc2 = True                                                               #le tank2 rebondi

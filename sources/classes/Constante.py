@@ -1,6 +1,7 @@
 ####################################################################################################################################
 #Ceci n'est pas une classe mais un fichier Python regroupant toutes les constantes permettant la modulation et l'équilibrage du jeu#
 ####################################################################################################################################
+import pygame
 # Physique
 HEIGHT = 1920  # Hauteur de l'écran (par défaut: 1920)
 WIDTH = 1080   # Largeur de l'écran (par défaut: 1080)
@@ -18,10 +19,21 @@ SHOOT_PLAYER = 10  # Dégats Tir du joueur (par défaut: 10)
 FPS = -1  # FPS (par défaut: 60)
 DURABILITY = 100  # Durabilité (par défaut: 100)
 MAX_DURABILITY = 100  # Durabilité maximale (par défaut: 100)
-SHOT_DELAY = 0.1  # Délai de tir (par défaut: 0.1)
+SHOT_DELAY = 0.000001  # Délai de tir (par défaut: 0.1)
 DELAY_BONUS = 4  # Bonus de délai (par défaut: 4)
 NOMBRE_DE_SKIN = 8  # Nombre de skins (modulable possibilité de rajouter des skin dans le selecteur)
 NOMBRE_DE_THEME = 3  # Nombre de thèmes (modulable possibilité de rajouter des Themes dans le selecteur)
+# Keyboard
+# Player 1
+FORWARD1 = pygame.K_w
+LEFT1 = pygame.K_a
+RIGHT1 = pygame.K_d
+SHOOT1 = pygame.K_SPACE
+# Player 2
+FORWARD2 = pygame.K_UP
+LEFT2 = pygame.K_LEFT
+RIGHT2 = pygame.K_RIGHT
+SHOOT2 = pygame.K_RSHIFT
 ####################################################################################################################################
 #Ceci n'est pas une classe mais un fichier Python regroupant toutes les constantes permettant la modulation et l'équilibrage du jeu#
 ####################################################################################################################################

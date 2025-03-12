@@ -21,6 +21,7 @@ from classes.TextDisplay import TextDisplay
 from classes.Bdd import Bdd
 from classes.Sound import MakeSound
 from classes.Constante import *
+import sys
 ############### BIBLIOTEQUE ###############
 ###########################################
 
@@ -303,14 +304,14 @@ while running :
     ### CONTROLE KEYBOARD ###
         if event.type == pygame.KEYDOWN:
             #détécter si la touche espace (player1) est enclenchée pour attaquer tank2
-            if event.key == pygame.K_SPACE :
+            if event.key == SHOOT1 :
                 rocket_sfx.play()
                 if game.player1.launch_projectile():
                     game.player1.bounce_force = VITESSE_INITIAL_BOUNCE
                     game.bump1 = True
                     
             #détécter si la touche espace (player2) est enclenchée pour attaquer tank2
-            if event.key == pygame.K_RSHIFT :
+            if event.key == SHOOT2:
                 rocket_sfx.play()
                 if game.player2.launch_projectile():
                     game.player2.bounce_force = VITESSE_INITIAL_BOUNCE
