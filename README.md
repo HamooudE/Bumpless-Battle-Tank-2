@@ -1,30 +1,29 @@
-# Trophées NSI 2024 - **Bumpless**
+# **Bumpless Battle Tank** - Version 2
 
-## Membres de l'équipe
-* Anas Achouch
+## Team Members
 * Mohamed El Amine Yahiaoui
 * Anas Sibarni
+* Anas Achouch
 
-## Résumé de votre projet (500 caractères max)
+## Project Summary (500 characters max)
 
-**Bumpless Battle Tank** est un jeu en un contre un avec des Tanks armés de Rockets. 
+**Bumpless Battle Tank** is a one-on-one game featuring tanks armed with rockets. 
 
-La dernière version de publication, la ``V7.0`` offre une ribambelle de fonctionnalités.
+The latest release, **V7.0**, offers a variety of features.
 
-* En jeu, les deux tanks se confrontent en 1VS1, ils peuvent obtenir des bonus et des malus qui modifient la vitesse ou la barre de durabilité du tank concerné.
-* Dans ``Settings``, on retrouve la possibilité de modifier les pseudonymes des joueurs ce qui est utile pour se reconnaître dans le classement. Ils peuvent également choisir chacun l'apparence de leur tank. On peut également modifier le thème général du jeu. 
-* Le ``Leaderboard`` affiche dans l’ordre les meilleurs joueurs enregistrés dans la base de donnée. Ils sont rangés en fonction de leur score qui est calculé à chaque démarrage du jeu en fonction de leurs différentes statistiques. 
-* L’ATH affiche de façon continue les coordonnées de chaque joueur et les FPS. 
+* In-game, the two tanks face off in 1v1 battles. Players can earn power-ups and power-downs that affect the tank's speed or durability bar.
+* In **Settings**, players can modify their pseudonyms, which is useful for ranking. They can also customize their tank's appearance and change the overall game theme.
+* The **Leaderboard** ranks the best players in the database based on their score, which is calculated at the start of each game based on their statistics.
+* The **HUD** continuously displays each player's coordinates and FPS.
 
-## Vidéo de démonstration
+## Demo Video
 
-## Protocole d'utilisation
+## Usage Instructions
 
-Pour démarrer le jeu, il suffit d'exécuter les commandes suivantes :
+To start the game, simply run the following commands:
 
 ```bash
 pip3 install -r requirements.txt
 cd sources
 python3 main.py
 ```
-
