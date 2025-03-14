@@ -85,8 +85,8 @@ class Projectile(pygame.sprite.Sprite):                                         
             return True
         ##############################
         #Si le projectile sort de la fenêtre -> remove
-        if self.rect.x > HEIGHT - 20 or self.rect.x < 20 or self.rect.colliderect(self.game.obstacle.rect): #Vérifier si projectile est sorti de la fenetre
+        if self.rect.x > WIDTH - 20 or self.rect.x < 20 or self.rect.colliderect(self.game.obstacle.rect): #Vérifier si projectile est sorti de la fenetre
             self.remove()
 
-        if self.rect.y > WIDTH - 20 or self.rect.y < 20 or self.rect.colliderect(self.game.obstacle.rect): #Vérifier si projectile est sorti de la fenetre
+        if self.rect.y > HEIGHT - 20 or self.rect.y < 20 or self.rect.colliderect(self.game.obstacle.rect): #Vérifier si projectile est sorti de la fenetre
             self.remove()

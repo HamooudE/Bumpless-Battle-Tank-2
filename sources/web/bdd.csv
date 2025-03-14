@@ -1,6 +1,6 @@
 Player;Wins;Defeats;Dégâts Infligés;Dégâts Subis;Score
-player1;18;25;2540;2630;7597
-player2;13;6;1330;1240;5347
+player1;24;31;3040;3080;9601
+player2;13;6;1330;1290;5347
 farmize;0;0;0;0;0
 test;0;0;0;0;0
 hamoude;0;0;0;0;0
@@ -16,7 +16,7 @@ playerf;0;0;0;0;0
 cheater;0;0;0;0;0
 HamoudE;0;0;0;0;0
 Farmize;0;0;0;0;0
-Hamoude;0;0;0;0;0
+Hamoude;1;0;90;20;579
 xfdheth;0;0;0;0;0
 hfdgdth;0;0;0;0;0
 victor;0;0;0;0;0
@@ -27,3 +27,4 @@ SDFSD;0;0;0;0;0
 elyqs;0;0;0;0;0
 meru;0;0;0;0;0
 hkgvhgv;0;0;0;0;0
+MERU;0;0;0;0;0

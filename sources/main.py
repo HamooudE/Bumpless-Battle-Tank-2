@@ -42,14 +42,13 @@ pick3_sfx = MakeSound("assets/sounds/pick3.mp3", 1)
 pygame.init()  # Initialisation de Pygame
 pygame.display.set_caption("BUMPLESS - BATTLE TANK")
 info = pygame.display.Info()
-SCREEN_WIDTH = info.current_w
-SCREEN_HEIGHT = info.current_h
-screen = pygame.display.set_mode((SCREEN_HEIGHT,SCREEN_WIDTH), pygame.FULLSCREEN)
+screen = pygame.display.set_mode((WIDTH, HEIGHT), pygame.FULLSCREEN)
 clock = pygame.time.Clock()
 game = Game(screen)
 pygame.init()
 bdd = Bdd()
 running = True
+
 ############### INITIALISATION DU JEU ###############
 #####################################################
 
@@ -58,79 +57,78 @@ running = True
 ################################ CREATION IMAGE + BOUTON MENU/NAVIGATION ################################
 ### MENU ###
 #IMAGE BACKGROUND PRINCIPALE
-background_principale = MenuCustom(screen, "assets/img/background" + str(game.theme) + ".png", 0, 0, HEIGHT, WIDTH)
+background_principale = MenuCustom(screen, "assets/img/background" + str(game.theme) + ".png", 0, 0, WIDTH, HEIGHT)
 #BOUTON START
-bouton_start = MenuCustom(game.screen, "assets/img/Bouton_start" + str(game.theme) + ".png", 820, 290, 300, 75)
+bouton_start = MenuCustom(game.screen, "assets/img/Bouton_start" + str(game.theme) + ".png", 820*SCALE_X, 290*SCALE_Y, 300*SCALE_X, 75*SCALE_Y)
 #BOUTON SETTING
-bouton_setting = MenuCustom(game.screen, "assets/img/Bouton_setting" + str(game.theme) + ".png", 820, 375, 300, 75)
+bouton_setting = MenuCustom(game.screen, "assets/img/Bouton_setting" + str(game.theme) + ".png", 820*SCALE_X, 375*SCALE_Y, 300*SCALE_X, 75*SCALE_Y)
 #BOUTON LEADERBOARD
-bouton_leaderboard = MenuCustom(game.screen, "assets/img/Bouton_leaderboard" + str(game.theme) + ".png", 820, 460, 300, 75)
+bouton_leaderboard = MenuCustom(game.screen, "assets/img/Bouton_leaderboard" + str(game.theme) + ".png", 820*SCALE_X, 460*SCALE_Y, 300*SCALE_X, 75*SCALE_Y)
 #BOUTON EXIT
-bouton_exit = MenuCustom(game.screen, "assets/img/Bouton_exit" + str(game.theme) + ".png", 820, 545, 300, 75)
+bouton_exit = MenuCustom(game.screen, "assets/img/Bouton_exit" + str(game.theme) + ".png", 820*SCALE_X, 545*SCALE_Y, 300*SCALE_X, 75*SCALE_Y)
 ### MODE SELECTORE ###
 #IMAGE BACKGROUND MODE SELECTOR
-background_mode_set = MenuCustom(screen, "assets/img/mode_set" + str(game.theme) + ".png", 0, 0, HEIGHT, WIDTH)
+background_mode_set = MenuCustom(screen, "assets/img/mode_set" + str(game.theme) + ".png", 0, 0, WIDTH, HEIGHT)
 #IMAGE MODE1 DEMO
-mode1_0 = MenuCustom(screen, "assets/img/mode1_0.png", 90, 250, 500, 275)
-mode1_1 = MenuCustom(screen, "assets/img/mode1_1.png", 90, 250, 500, 275)
+mode1_0 = MenuCustom(screen, "assets/img/mode1_0.png", 90*SCALE_X, 250*SCALE_Y, 500*SCALE_X, 275*SCALE_Y)
+mode1_1 = MenuCustom(screen, "assets/img/mode1_1.png", 90*SCALE_X, 250*SCALE_Y, 500*SCALE_X, 275*SCALE_Y)
 #IMAGE MODE2 DEMO
-mode2_0 = MenuCustom(screen, "assets/img/mode2_0.png", 710, 250, 500, 275)
-mode2_1 = MenuCustom(screen, "assets/img/mode2_1.png", 710, 250, 500, 275)
+mode2_0 = MenuCustom(screen, "assets/img/mode2_0.png", 710*SCALE_X, 250*SCALE_Y, 500*SCALE_X, 275*SCALE_Y)
+mode2_1 = MenuCustom(screen, "assets/img/mode2_1.png", 710*SCALE_X, 250*SCALE_Y, 500*SCALE_X, 275*SCALE_Y)
 #IMAGE MODE3 DEMO
-mode3_0 = MenuCustom(screen, "assets/img/mode3_0.png", 1330, 250, 500, 275)
-mode3_1 = MenuCustom(screen, "assets/img/mode3_1.png", 1330, 250, 500, 275)
+mode3_0 = MenuCustom(screen, "assets/img/mode3_0.png", 1330*SCALE_X, 250*SCALE_Y, 500*SCALE_X, 275*SCALE_Y)
+mode3_1 = MenuCustom(screen, "assets/img/mode3_1.png", 1330*SCALE_X, 250*SCALE_Y, 500*SCALE_X, 275*SCALE_Y)
 #IMAGE MODE4 DEMO
-mode4_0 = MenuCustom(screen, "assets/img/mode4_0.png", 90, 600, 500, 275)
-mode4_1 = MenuCustom(screen, "assets/img/mode4_1.png", 90, 600, 500, 275)
+mode4_0 = MenuCustom(screen, "assets/img/mode4_0.png", 90*SCALE_X, 600*SCALE_Y, 500*SCALE_X, 275*SCALE_Y)
+mode4_1 = MenuCustom(screen, "assets/img/mode4_1.png", 90*SCALE_X, 600*SCALE_Y, 500*SCALE_X, 275*SCALE_Y)
 #IMAGE MODE5 DEMO
-mode5_0 = MenuCustom(screen, "assets/img/mode5_0.png", 710, 600, 500, 275)
-mode5_1 = MenuCustom(screen, "assets/img/mode5_1.png", 710, 600, 500, 275)
+mode5_0 = MenuCustom(screen, "assets/img/mode5_0.png", 710*SCALE_X, 600*SCALE_Y, 500*SCALE_X, 275*SCALE_Y)
+mode5_1 = MenuCustom(screen, "assets/img/mode5_1.png", 710*SCALE_X, 600*SCALE_Y, 500*SCALE_X, 275*SCALE_Y)
 #IMAGE MODE6 DEMO
-mode6_0 = MenuCustom(screen, "assets/img/mode6_0.png", 1330, 600, 500, 275)
-mode6_1 = MenuCustom(screen, "assets/img/mode6_1.png", 1330, 600, 500, 275)
+mode6_0 = MenuCustom(screen, "assets/img/mode6_0.png", 1330*SCALE_X, 600*SCALE_Y, 500*SCALE_X, 275*SCALE_Y)
+mode6_1 = MenuCustom(screen, "assets/img/mode6_1.png", 1330*SCALE_X, 600*SCALE_Y, 500*SCALE_X, 275*SCALE_Y)
 ### SETTING ###
 #IMAGE BACKGROUND SETTING
-background_setting = MenuCustom(screen, "assets/img/settings" + str(game.theme) + ".png", 0, 0, HEIGHT, WIDTH)
+background_setting = MenuCustom(screen, "assets/img/settings" + str(game.theme) + ".png", 0, 0,WIDTH, HEIGHT)
 #PREVIEW TEXTURE PLAYER_1
-p1_tex_prev = MenuCustom(game.screen, "assets/img/player1_step" + str(game.p1_skin) + ".png" , 1490, 280)
+p1_tex_prev = MenuCustom(game.screen, "assets/img/player1_step" + str(game.p1_skin) + ".png" , 1490*SCALE_X, 280*SCALE_Y)
 #PREVIEW TEXTURE PLAYER_2
-p2_tex_prev = MenuCustom(game.screen, "assets/img/player2_step" + str(game.p1_skin) + ".png" , 1490, 435)
+p2_tex_prev = MenuCustom(game.screen, "assets/img/player2_step" + str(game.p1_skin) + ".png" , 1490*SCALE_X, 435*SCALE_Y)
 #PREVIEW TEXTURE Theme
-theme_tex_prev = MenuCustom(game.screen, "assets/img/background" + str(game.theme) + ".png" , 1475, 600, 128, 72)
+theme_tex_prev = MenuCustom(game.screen, "assets/img/background" + str(game.theme) + ".png" , 1475*SCALE_X, 600*SCALE_Y, 128*SCALE_X, 72*SCALE_Y)
 #BOUTON FLECHE CHOIX DU SKIN PLAYER_1
-bouton_d1_texture = MenuCustom(game.screen, "assets/img/Fleche_droite" + str(game.theme) + ".png", 1615, 280, 178, 100)
-bouton_g1_texture = MenuCustom(game.screen, "assets/img/Fleche_gauche" + str(game.theme) + ".png", 1285, 280, 178, 100)
+bouton_d1_texture = MenuCustom(game.screen, "assets/img/Fleche_droite" + str(game.theme) + ".png", 1615*SCALE_X, 280*SCALE_Y, 178*SCALE_X, 100*SCALE_Y)
+bouton_g1_texture = MenuCustom(game.screen, "assets/img/Fleche_gauche" + str(game.theme) + ".png", 1285*SCALE_X, 280*SCALE_Y, 178*SCALE_X, 100*SCALE_Y)
 #BOUTON FLECHE CHOIX DU SKIN PLAYER_2   
-bouton_d2_texture = MenuCustom(game.screen, "assets/img/Fleche_droite" + str(game.theme) + ".png", 1615, 435, 178, 100)
-bouton_g2_texture = MenuCustom(game.screen, "assets/img/Fleche_gauche" + str(game.theme) + ".png", 1285, 435, 178, 100)
+bouton_d2_texture = MenuCustom(game.screen, "assets/img/Fleche_droite" + str(game.theme) + ".png", 1615*SCALE_X, 435*SCALE_Y, 178*SCALE_X, 100*SCALE_Y)
+bouton_g2_texture = MenuCustom(game.screen, "assets/img/Fleche_gauche" + str(game.theme) + ".png", 1285*SCALE_X, 435*SCALE_Y, 178*SCALE_X, 100*SCALE_Y)
 #BOUTON FLECHE CHOIX DU Theme
-bouton_d_theme = MenuCustom(game.screen, "assets/img/Fleche_droite" + str(game.theme) + ".png", 1615, 590, 178, 100)
-bouton_g_theme = MenuCustom(game.screen, "assets/img/Fleche_gauche" + str(game.theme) + ".png", 1285, 590, 178, 100)
+bouton_d_theme = MenuCustom(game.screen, "assets/img/Fleche_droite" + str(game.theme) + ".png", 1615*SCALE_X, 590*SCALE_Y, 178*SCALE_X, 100*SCALE_Y)
+bouton_g_theme = MenuCustom(game.screen, "assets/img/Fleche_gauche" + str(game.theme) + ".png", 1285*SCALE_X, 590*SCALE_Y, 178*SCALE_X, 100*SCALE_Y)
 #BOUTON Edit PLAYER_1
-bouton_edit_p1 = MenuCustom(game.screen, "assets/img/Bouton_edit0.png", 150, 310)
+bouton_edit_p1 = MenuCustom(game.screen, "assets/img/Bouton_edit0.png", 150*SCALE_X, 310*SCALE_Y)
 #BOUTON set PLAYER_1
-bouton_edit_p2 = MenuCustom(game.screen, "assets/img/Bouton_edit0.png", 150, 460)
+bouton_edit_p2 = MenuCustom(game.screen, "assets/img/Bouton_edit0.png", 150*SCALE_X, 460*SCALE_Y)
 #BOUTON Edit PLAYER_1
-bouton_set_p1 = MenuCustom(game.screen, "assets/img/Bouton_set0.png", 300, 310)
+bouton_set_p1 = MenuCustom(game.screen, "assets/img/Bouton_set0.png", 300*SCALE_X, 310*SCALE_Y)
 #BOUTON set PLAYER_1
-bouton_set_p2 = MenuCustom(game.screen, "assets/img/Bouton_set0.png", 300, 460)
+bouton_set_p2 = MenuCustom(game.screen, "assets/img/Bouton_set0.png", 300*SCALE_X, 460*SCALE_Y)
 ### LEADERBOARD ###
 #IMAGE BACKGROUND LEADERBOARD
-background_leaderboard = MenuCustom(screen, "assets/img/leaderboard" + str(game.theme) + ".png", 0, 0, HEIGHT, WIDTH)
+background_leaderboard = MenuCustom(screen, "assets/img/leaderboard" + str(game.theme) + ".png", 0, 0, WIDTH, HEIGHT)
 #IMAGE PREVIEW TOP1
-top1_skin = MenuCustom(screen, "assets/img/player1_step1.png", 315, 460)
+top1_skin = MenuCustom(screen, "assets/img/player1_step1.png", 315*SCALE_X, 460*SCALE_Y)
 #IMAGE PREVIEW TOP2
-top2_skin = MenuCustom(screen, "assets/img/player1_step2.png", 135, 550)
+top2_skin = MenuCustom(screen, "assets/img/player1_step2.png", 135*SCALE_X, 550*SCALE_Y)
 #IMAGE PREVIEW TOP3
-top3_skin = MenuCustom(screen, "assets/img/player1_step3.png", 505, 640)
+top3_skin = MenuCustom(screen, "assets/img/player1_step3.png", 505*SCALE_X, 640*SCALE_Y)
 ### AUTRE ###
 #BACKGROUND OPTION PAUSE
-background_pause = MenuCustom(game.screen, "assets/img/pause0.png", 0, 0)
+background_pause = MenuCustom(game.screen, "assets/img/pause0.png", 0, 0, WIDTH, HEIGHT)
 #BOUTON RETOUR AU MENU
-bouton_go_menu = MenuCustom(game.screen, "assets/img/Bouton_goback" + str(game.theme) + ".png", 80, 960, 200, 50)
+bouton_go_menu = MenuCustom(game.screen, "assets/img/Bouton_goback" + str(game.theme) + ".png", 80*SCALE_X, 960*SCALE_Y, 200*SCALE_X, 50*SCALE_Y)
 ################################ CREATION IMAGE + BOUTON MENU/NAVIGATION ################################
 #########################################################################################################
-
 
 ##############################################################################################
 ################################ CREATION TEXT + ATH + OPTION ################################
@@ -143,114 +141,115 @@ color = [pygame.Color(80, 180, 180), pygame.Color(100, 200, 153), pygame.Color(2
 ### TEXT DISPLAY ###
 #SETTING OPTION
 #NICKNAME EDITOR
-input_name_p1 = pygame.Rect(500, 310, 140, 34)
+input_name_p1 = pygame.Rect(500* SCALE_X, 310* SCALE_Y, 140*SCALE_X, 34*SCALE_Y)
 game.p1_name = "player1"
-input_name_p2 = pygame.Rect(500, 460, 140, 34)
+input_name_p2 = pygame.Rect(500* SCALE_X, 460* SCALE_Y, 140*SCALE_X, 34*SCALE_Y)
 game.p2_name = "player2"
 font = pygame.font.Font("assets/Fonts/font1.ttf", 50)
 edit_p1name = False
 edit_p2name = False
 #SETTING SKIN SELECTOR
-p1_skin_display = TextDisplay(game.screen, "Skin " + str(int(game.p1_skin)), "assets/Fonts/font2.ttf", color[game.theme], 10, 1090, 340)
-p2_skin_display = TextDisplay(game.screen, "Skin " + str(int(game.p2_skin)), "assets/Fonts/font2.ttf", color[game.theme], 16, 1090, 490)
-title_p1_skin_display = TextDisplay(game.screen, game.p1_name, "assets/Fonts/font2.ttf", color[game.theme], 43, 1040, 310)
-title_p2_skin_display = TextDisplay(game.screen, game.p2_name, "assets/Fonts/font2.ttf", color[game.theme], 43, 1040, 460)
-theme_display = TextDisplay(game.screen, "Theme  " + str(game.theme), "assets/Fonts/font2.ttf", color[game.theme], 43, 1040, 610)
-bounce_set = TextDisplay(game.screen, "Bounce set to: " + str(game.bounce_l[game.bounce_i]), "assets/Fonts/font2.ttf", color[game.theme], 43, 130, 610)
-choc_set = TextDisplay(game.screen, "Bounce set to : " + str(game.choc_l[game.choc_i]), "assets/Fonts/font2.ttf", color[game.theme], 43, 130, 760)
+p1_skin_display = TextDisplay(game.screen, "Skin " + str(int(game.p1_skin)), "assets/Fonts/font2.ttf", color[game.theme], 10, 1090*SCALE_X, 340*SCALE_Y)
+p2_skin_display = TextDisplay(game.screen, "Skin " + str(int(game.p2_skin)), "assets/Fonts/font2.ttf", color[game.theme], 16, 1090*SCALE_X, 490*SCALE_Y)
+title_p1_skin_display = TextDisplay(game.screen, game.p1_name, "assets/Fonts/font2.ttf", color[game.theme], 43, 1040*SCALE_X, 310*SCALE_Y)
+title_p2_skin_display = TextDisplay(game.screen, game.p2_name, "assets/Fonts/font2.ttf", color[game.theme], 43, 1040*SCALE_X, 460*SCALE_Y)
+theme_display = TextDisplay(game.screen, "Theme  " + str(game.theme), "assets/Fonts/font2.ttf", color[game.theme], 43, 1040*SCALE_X, 610*SCALE_Y)
+bounce_set = TextDisplay(game.screen, "Bounce set to: " + str(game.bounce_l[game.bounce_i]), "assets/Fonts/font2.ttf", color[game.theme], 43, 130*SCALE_X, 610*SCALE_Y)
+choc_set = TextDisplay(game.screen, "Bounce set to : " + str(game.choc_l[game.choc_i]), "assets/Fonts/font2.ttf", color[game.theme], 43, 130*SCALE_X, 760*SCALE_Y)
 #TITLE
-title_display = TextDisplay(game.screen, "Bumpless", "assets/Fonts/font1.ttf", color[game.theme], 72, 750, 60)
+title_display = TextDisplay(game.screen, "Bumpless", "assets/Fonts/font1.ttf", color[game.theme], 72, 750*SCALE_X, 60*SCALE_Y)
 #MENU
-mode_title = TextDisplay(game.screen, "Mode Set", "assets/Fonts/font2.ttf", color[game.theme], 92, 75, 65)
-setting_title = TextDisplay(game.screen, "Setting", "assets/Fonts/font2.ttf", color[game.theme], 92, 100, 65)
-leaderboard_title = TextDisplay(game.screen, "Leaderboard", "assets/Fonts/font2.ttf", color[game.theme], 64, 65, 80)
+mode_title = TextDisplay(game.screen, "Mode Set", "assets/Fonts/font2.ttf", color[game.theme], 92, 75*SCALE_X, 65*SCALE_Y)
+setting_title = TextDisplay(game.screen, "Setting", "assets/Fonts/font2.ttf", color[game.theme], 92, 100*SCALE_X, 65*SCALE_Y)
+leaderboard_title = TextDisplay(game.screen, "Leaderboard", "assets/Fonts/font2.ttf", color[game.theme], 64, 65*SCALE_X, 80*SCALE_Y)
 #IN GAME ATH
-fps_display = TextDisplay(game.screen, "FPS : " + str(int(clock.get_fps())), "assets/Fonts/font1.ttf", color[game.theme], 18, 940, 5)
-p1_xyz_display = TextDisplay(game.screen, "#" + game.p1_name + ": X: " + str(int(game.player1.pos[0])) + "  Y: " + str(int(game.player1.pos[1])), "assets/Fonts/font2.ttf", color[game.theme], 18, 10, 5)
-p2_xyz_display = TextDisplay(game.screen, "#" + game.p2_name + ": X: " + str(int(game.player2.pos[0])) + "  Y: " + str(int(game.player2.pos[1])), "assets/Fonts/font2.ttf", color[game.theme], 18, 1595, 5)
+fps_display = TextDisplay(game.screen, "FPS : " + str(int(clock.get_fps())), "assets/Fonts/font1.ttf", color[game.theme], 18, 940*SCALE_X, 5*SCALE_Y)
+p1_xyz_display = TextDisplay(game.screen, "#" + game.p1_name + ": X: " + str(int(game.player1.pos[0])) + "  Y: " + str(int(game.player1.pos[1])), "assets/Fonts/font2.ttf", color[game.theme], 18, 10*SCALE_X, 5*SCALE_Y)
+p2_xyz_display = TextDisplay(game.screen, "#" + game.p2_name + ": X: " + str(int(game.player2.pos[0])) + "  Y: " + str(int(game.player2.pos[1])), "assets/Fonts/font2.ttf", color[game.theme], 18, 1595*SCALE_X, 5*SCALE_Y)
 #SCORE LEADERBOARD
-Stat_display = TextDisplay(game.screen, "NickName", "assets/Fonts/font2.ttf", pygame.Color(1, 200, 153), 35, 740, 175)
-ratio_victoire_display = TextDisplay(game.screen, "Win\Lose", "assets/Fonts/font2.ttf", pygame.Color(1, 200, 153), 35, 1020, 175)
-ratio_degat_display = TextDisplay(game.screen, "Damage\Hit", "assets/Fonts/font2.ttf", pygame.Color(1, 200, 153), 35, 1250, 175)
-win_display = TextDisplay(game.screen, "WIN", "assets/Fonts/font2.ttf", pygame.Color(1, 200, 153), 35, 1540, 175)
-score_display = TextDisplay(game.screen, "Score", "assets/Fonts/font2.ttf", pygame.Color(1, 200, 153), 35, 1690, 175)
+Stat_display = TextDisplay(game.screen, "NickName", "assets/Fonts/font2.ttf", pygame.Color(1, 200, 153), 35, 740*SCALE_X, 175*SCALE_Y)
+ratio_victoire_display = TextDisplay(game.screen, "Win\Lose", "assets/Fonts/font2.ttf", pygame.Color(1, 200, 153), 35, 1020*SCALE_X, 175*SCALE_Y)
+ratio_degat_display = TextDisplay(game.screen, "Damage\Hit", "assets/Fonts/font2.ttf", pygame.Color(1, 200, 153), 35, 1250*SCALE_X, 175*SCALE_Y)
+win_display = TextDisplay(game.screen, "WIN", "assets/Fonts/font2.ttf", pygame.Color(1, 200, 153), 35, 1540*SCALE_X, 175*SCALE_Y)
+score_display = TextDisplay(game.screen, "Score", "assets/Fonts/font2.ttf", pygame.Color(1, 200, 153), 35, 1690*SCALE_X, 175*SCALE_Y)
 
-Stat1_display = TextDisplay(game.screen, str(bdd.leader_score()[0][0]), "assets/Fonts/font2.ttf", color[game.theme], 35, 750, 235)
-pod1_display = TextDisplay(game.screen, str(bdd.leader_score()[0][0]), "assets/Fonts/font2.ttf", color[game.theme], 35, 265, 380)
-ratio_victoire1_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[0][1])/(int(bdd.leader_score()[0][2])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1100, 235)
-ratio_degat1_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[0][3])/(int(bdd.leader_score()[0][4])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1300, 235)
-win1_display = TextDisplay(game.screen, str(bdd.leader_score()[0][1]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1550, 235)
-score1_display = TextDisplay(game.screen, str(bdd.leader_score()[0][5]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1700, 235)
+Stat1_display = TextDisplay(game.screen, str(bdd.leader_score()[0][0]), "assets/Fonts/font2.ttf", color[game.theme], 35, 750*SCALE_X, 235*SCALE_Y)
+pod1_display = TextDisplay(game.screen, str(bdd.leader_score()[0][0]), "assets/Fonts/font2.ttf", color[game.theme], 35, 265*SCALE_X, 380*SCALE_Y)
+ratio_victoire1_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[0][1])/(int(bdd.leader_score()[0][2])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1100*SCALE_X, 235*SCALE_Y)
+ratio_degat1_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[0][3])/(int(bdd.leader_score()[0][4])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1300*SCALE_X, 235*SCALE_Y)
+win1_display = TextDisplay(game.screen, str(bdd.leader_score()[0][1]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1550*SCALE_X, 235*SCALE_Y)
+score1_display = TextDisplay(game.screen, str(bdd.leader_score()[0][5]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1700*SCALE_X, 235*SCALE_Y)
 
-Stat2_display = TextDisplay(game.screen, str(bdd.leader_score()[1][0]), "assets/Fonts/font2.ttf", color[game.theme], 35, 750, 295)
-pod2_display = TextDisplay(game.screen, str(bdd.leader_score()[1][0]), "assets/Fonts/font2.ttf", color[game.theme], 30, 70, 480)
-ratio_victoire2_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[1][1])/(int(bdd.leader_score()[1][2])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1100, 295)
-ratio_degat2_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[1][3])/(int(bdd.leader_score()[1][4])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1300, 295)
-win2_display = TextDisplay(game.screen, str(bdd.leader_score()[1][1]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1550, 295)
-score2_display = TextDisplay(game.screen, str(bdd.leader_score()[1][5]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1700, 295)
+Stat2_display = TextDisplay(game.screen, str(bdd.leader_score()[1][0]), "assets/Fonts/font2.ttf", color[game.theme], 35, 750*SCALE_X, 295*SCALE_Y)
+pod2_display = TextDisplay(game.screen, str(bdd.leader_score()[1][0]), "assets/Fonts/font2.ttf", color[game.theme], 30, 70*SCALE_X, 480*SCALE_Y)
+ratio_victoire2_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[1][1])/(int(bdd.leader_score()[1][2])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1100*SCALE_X, 295*SCALE_Y)
+ratio_degat2_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[1][3])/(int(bdd.leader_score()[1][4])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1300*SCALE_X, 295*SCALE_Y)
+win2_display = TextDisplay(game.screen, str(bdd.leader_score()[1][1]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1550*SCALE_X, 295*SCALE_Y)
+score2_display = TextDisplay(game.screen, str(bdd.leader_score()[1][5]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1700*SCALE_X, 295*SCALE_Y)
 
-Stat3_display = TextDisplay(game.screen, str(bdd.leader_score()[2][0]), "assets/Fonts/font2.ttf", color[game.theme], 35, 750, 355)
-pod3_display = TextDisplay(game.screen, str(bdd.leader_score()[2][0]), "assets/Fonts/font2.ttf", color[game.theme], 35, 480, 560)
-ratio_victoire3_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[2][1])/(int(bdd.leader_score()[2][2])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1100, 355)
-ratio_degat3_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[2][3])/(int(bdd.leader_score()[0][4])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1300, 355)
-win3_display = TextDisplay(game.screen, str(bdd.leader_score()[2][1]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1550, 355)
-score3_display = TextDisplay(game.screen, str(bdd.leader_score()[2][5]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1700, 355)
+Stat3_display = TextDisplay(game.screen, str(bdd.leader_score()[2][0]), "assets/Fonts/font2.ttf", color[game.theme], 35, 750*SCALE_X, 355*SCALE_Y)
+pod3_display = TextDisplay(game.screen, str(bdd.leader_score()[2][0]), "assets/Fonts/font2.ttf", color[game.theme], 35, 480*SCALE_X, 560*SCALE_Y)
+ratio_victoire3_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[2][1])/(int(bdd.leader_score()[2][2])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1100*SCALE_X, 355*SCALE_Y)
+ratio_degat3_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[2][3])/(int(bdd.leader_score()[0][4])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1300*SCALE_X, 355*SCALE_Y)
+win3_display = TextDisplay(game.screen, str(bdd.leader_score()[2][1]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1550*SCALE_X, 355*SCALE_Y)
+score3_display = TextDisplay(game.screen, str(bdd.leader_score()[2][5]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1700*SCALE_X, 355*SCALE_Y)
 
-Stat4_display = TextDisplay(game.screen, str(bdd.leader_score()[3][0]), "assets/Fonts/font2.ttf", color[game.theme], 35, 750, 415)
-ratio_victoire4_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[3][1])/(int(bdd.leader_score()[3][2])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1100, 415)
-ratio_degat4_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[3][3])/(int(bdd.leader_score()[3][4])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1300, 415)
-win4_display = TextDisplay(game.screen, str(bdd.leader_score()[3][1]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1550, 415)
-score4_display = TextDisplay(game.screen, str(bdd.leader_score()[3][5]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1700, 415)
+Stat4_display = TextDisplay(game.screen, str(bdd.leader_score()[3][0]), "assets/Fonts/font2.ttf", color[game.theme], 35, 750*SCALE_X, 415*SCALE_Y)
+ratio_victoire4_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[3][1])/(int(bdd.leader_score()[3][2])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1100*SCALE_X, 415*SCALE_Y)
+ratio_degat4_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[3][3])/(int(bdd.leader_score()[3][4])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1300*SCALE_X, 415*SCALE_Y)
+win4_display = TextDisplay(game.screen, str(bdd.leader_score()[3][1]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1550*SCALE_X, 415*SCALE_Y)
+score4_display = TextDisplay(game.screen, str(bdd.leader_score()[3][5]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1700*SCALE_X, 415*SCALE_Y)
 
-Stat5_display = TextDisplay(game.screen, str(bdd.leader_score()[4][0]), "assets/Fonts/font2.ttf", color[game.theme], 35, 750, 475)
-ratio_victoire5_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[4][1])/(int(bdd.leader_score()[4][2])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1100, 475)
-ratio_degat5_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[4][3])/(int(bdd.leader_score()[4][4])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1300, 475)
-win5_display = TextDisplay(game.screen, str(bdd.leader_score()[4][1]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1550, 475)
-score5_display = TextDisplay(game.screen, str(bdd.leader_score()[4][5]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1700, 475)
+Stat5_display = TextDisplay(game.screen, str(bdd.leader_score()[4][0]), "assets/Fonts/font2.ttf", color[game.theme], 35, 750*SCALE_X, 475*SCALE_Y)
+ratio_victoire5_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[4][1])/(int(bdd.leader_score()[4][2])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1100*SCALE_X, 475*SCALE_Y)
+ratio_degat5_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[4][3])/(int(bdd.leader_score()[4][4])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1300*SCALE_X, 475*SCALE_Y)
+win5_display = TextDisplay(game.screen, str(bdd.leader_score()[4][1]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1550*SCALE_X, 475*SCALE_Y)
+score5_display = TextDisplay(game.screen, str(bdd.leader_score()[4][5]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1700*SCALE_X, 475*SCALE_Y)
 
-Stat6_display = TextDisplay(game.screen, str(bdd.leader_score()[5][0]), "assets/Fonts/font2.ttf", color[game.theme], 35, 750, 535)
-ratio_victoire6_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[5][1])/(int(bdd.leader_score()[5][2])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1100, 535)
-ratio_degat6_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[5][3])/(int(bdd.leader_score()[5][4])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1300, 535)
-win6_display = TextDisplay(game.screen, str(bdd.leader_score()[5][1]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1550, 535)
-score6_display = TextDisplay(game.screen, str(bdd.leader_score()[5][5]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1700, 535)
+Stat6_display = TextDisplay(game.screen, str(bdd.leader_score()[5][0]), "assets/Fonts/font2.ttf", color[game.theme], 35, 750*SCALE_X, 535*SCALE_Y)
+ratio_victoire6_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[5][1])/(int(bdd.leader_score()[5][2])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1100*SCALE_X, 535*SCALE_Y)
+ratio_degat6_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[5][3])/(int(bdd.leader_score()[5][4])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1300*SCALE_X, 535*SCALE_Y)
+win6_display = TextDisplay(game.screen, str(bdd.leader_score()[5][1]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1550*SCALE_X, 535*SCALE_Y)
+score6_display = TextDisplay(game.screen, str(bdd.leader_score()[5][5]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1700*SCALE_X, 535*SCALE_Y)
 
-Stat7_display = TextDisplay(game.screen, str(bdd.leader_score()[6][0]), "assets/Fonts/font2.ttf", color[game.theme], 35, 750, 595)
-ratio_victoire7_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[6][1])/(int(bdd.leader_score()[6][2])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1100, 595)
-ratio_degat7_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[6][3])/(int(bdd.leader_score()[6][4])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1300, 595)
-win7_display = TextDisplay(game.screen, str(bdd.leader_score()[6][1]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1550, 595)
-score7_display = TextDisplay(game.screen, str(bdd.leader_score()[6][5]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1700, 595)
+Stat7_display = TextDisplay(game.screen, str(bdd.leader_score()[6][0]), "assets/Fonts/font2.ttf", color[game.theme], 35, 750*SCALE_X, 595*SCALE_Y)
+ratio_victoire7_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[6][1])/(int(bdd.leader_score()[6][2])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1100*SCALE_X, 595*SCALE_Y)
+ratio_degat7_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[6][3])/(int(bdd.leader_score()[6][4])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1300*SCALE_X, 595*SCALE_Y)
+win7_display = TextDisplay(game.screen, str(bdd.leader_score()[6][1]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1550*SCALE_X, 595*SCALE_Y)
+score7_display = TextDisplay(game.screen, str(bdd.leader_score()[6][5]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1700*SCALE_X, 595*SCALE_Y)
 
-Stat8_display = TextDisplay(game.screen, str(bdd.leader_score()[7][0]), "assets/Fonts/font2.ttf", color[game.theme], 35, 750, 655)
-ratio_victoire8_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[7][1])/(int(bdd.leader_score()[7][2])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1100, 655)
-ratio_degat8_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[7][3])/(int(bdd.leader_score()[7][4])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1300, 655)
-win8_display = TextDisplay(game.screen, str(bdd.leader_score()[7][1]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1550, 655)
-score8_display = TextDisplay(game.screen, str(bdd.leader_score()[7][5]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1700, 655)
+Stat8_display = TextDisplay(game.screen, str(bdd.leader_score()[7][0]), "assets/Fonts/font2.ttf", color[game.theme], 35, 750*SCALE_X, 655*SCALE_Y)
+ratio_victoire8_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[7][1])/(int(bdd.leader_score()[7][2])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1100*SCALE_X, 655*SCALE_Y)
+ratio_degat8_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[7][3])/(int(bdd.leader_score()[7][4])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1300*SCALE_X, 655*SCALE_Y)
+win8_display = TextDisplay(game.screen, str(bdd.leader_score()[7][1]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1550*SCALE_X, 655*SCALE_Y)
+score8_display = TextDisplay(game.screen, str(bdd.leader_score()[7][5]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1700*SCALE_X, 655*SCALE_Y)
 
-Stat9_display = TextDisplay(game.screen, str(bdd.leader_score()[8][0]), "assets/Fonts/font2.ttf", color[game.theme], 35, 750, 715)
-ratio_victoire9_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[8][1])/(int(bdd.leader_score()[8][2])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1100, 715)
-ratio_degat9_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[8][3])/(int(bdd.leader_score()[8][4])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1300, 715)
-win9_display = TextDisplay(game.screen, str(bdd.leader_score()[8][1]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1550, 715)
-score9_display = TextDisplay(game.screen, str(bdd.leader_score()[8][5]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1700, 715)
+Stat9_display = TextDisplay(game.screen, str(bdd.leader_score()[8][0]), "assets/Fonts/font2.ttf", color[game.theme], 35, 750*SCALE_X, 715*SCALE_Y)
+ratio_victoire9_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[8][1])/(int(bdd.leader_score()[8][2])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1100*SCALE_X, 715*SCALE_Y)
+ratio_degat9_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[8][3])/(int(bdd.leader_score()[8][4])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1300*SCALE_X, 715*SCALE_Y)
+win9_display = TextDisplay(game.screen, str(bdd.leader_score()[8][1]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1550*SCALE_X, 715*SCALE_Y)
+score9_display = TextDisplay(game.screen, str(bdd.leader_score()[8][5]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1700*SCALE_X, 715*SCALE_Y)
 
-Stat10_display = TextDisplay(game.screen, str(bdd.leader_score()[9][0]), "assets/Fonts/font2.ttf", color[game.theme], 35, 750, 775)
-ratio_victoire10_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[9][1])/(int(bdd.leader_score()[9][2])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1100, 775)
-ratio_degat10_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[9][3])/(int(bdd.leader_score()[9][4])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1300, 775)
-win10_display = TextDisplay(game.screen, str(bdd.leader_score()[9][1]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1550, 775)
-score10_display = TextDisplay(game.screen, str(bdd.leader_score()[9][5]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1700, 775)
+Stat10_display = TextDisplay(game.screen, str(bdd.leader_score()[9][0]), "assets/Fonts/font2.ttf", color[game.theme], 35, 750*SCALE_X, 775*SCALE_Y)
+ratio_victoire10_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[9][1])/(int(bdd.leader_score()[9][2])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1100*SCALE_X, 775*SCALE_Y)
+ratio_degat10_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[9][3])/(int(bdd.leader_score()[9][4])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1300*SCALE_X, 775*SCALE_Y)
+win10_display = TextDisplay(game.screen, str(bdd.leader_score()[9][1]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1550*SCALE_X, 775*SCALE_Y)
+score10_display = TextDisplay(game.screen, str(bdd.leader_score()[9][5]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1700*SCALE_X, 775*SCALE_Y)
 
-Stat11_display = TextDisplay(game.screen, str(bdd.leader_score()[10][0]), "assets/Fonts/font2.ttf", color[game.theme], 35, 750, 835)
-ratio_victoire11_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[10][1])/(int(bdd.leader_score()[10][2])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1100, 835)
-ratio_degat11_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[10][3])/(int(bdd.leader_score()[10][4])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1300, 835)
-win11_display = TextDisplay(game.screen, str(bdd.leader_score()[10][1]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1550, 835)
-score11_display = TextDisplay(game.screen, str(bdd.leader_score()[10][5]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1700, 835)
+Stat11_display = TextDisplay(game.screen, str(bdd.leader_score()[10][0]), "assets/Fonts/font2.ttf", color[game.theme], 35, 750*SCALE_X, 835*SCALE_Y)
+ratio_victoire11_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[10][1])/(int(bdd.leader_score()[10][2])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1100*SCALE_X, 835*SCALE_Y)
+ratio_degat11_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[10][3])/(int(bdd.leader_score()[10][4])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1300*SCALE_X, 835*SCALE_Y)
+win11_display = TextDisplay(game.screen, str(bdd.leader_score()[10][1]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1550*SCALE_X, 835*SCALE_Y)
+score11_display = TextDisplay(game.screen, str(bdd.leader_score()[10][5]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1700*SCALE_X, 835*SCALE_Y)
 
-Stat12_display = TextDisplay(game.screen, str(bdd.leader_score()[11][0]), "assets/Fonts/font2.ttf", color[game.theme], 35, 750, 895)
-ratio_victoire12_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[11][1])/(int(bdd.leader_score()[11][2])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1100, 895)
-ratio_degat12_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[11][3])/(int(bdd.leader_score()[11][4])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1300, 895)
-win12_display = TextDisplay(game.screen, str(bdd.leader_score()[11][1]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1550, 895)
-score12_display = TextDisplay(game.screen, str(bdd.leader_score()[11][5]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1700, 895)
+Stat12_display = TextDisplay(game.screen, str(bdd.leader_score()[11][0]), "assets/Fonts/font2.ttf", color[game.theme], 35, 750*SCALE_X, 895*SCALE_Y)
+ratio_victoire12_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[11][1])/(int(bdd.leader_score()[11][2])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1100*SCALE_X, 895*SCALE_Y)
+ratio_degat12_display = TextDisplay(game.screen, str(int(int(bdd.leader_score()[11][3])/(int(bdd.leader_score()[11][4])+1))), "assets/Fonts/font2.ttf", color[game.theme], 35, 1300*SCALE_X, 895*SCALE_Y)
+win12_display = TextDisplay(game.screen, str(bdd.leader_score()[11][1]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1550*SCALE_X, 895*SCALE_Y)
+score12_display = TextDisplay(game.screen, str(bdd.leader_score()[11][5]), "assets/Fonts/font2.ttf", color[game.theme], 35, 1700*SCALE_X, 895*SCALE_Y)
 ################################ CREATION TEXT + ATH + OPTION ################################
 ##############################################################################################
+
 
 
 ########################################################################################################
@@ -406,7 +405,7 @@ while running :
                 else:
                     game.p1_skin += 1
                 pick2_sfx.play()
-                game.player1 = Player(game, "player1", "assets/img/player1_step"+str(game.p1_skin)+".png", 50, 515, 3, -90)
+                game.player1 = Player(game, "player1", "assets/img/player1_step"+str(game.p1_skin)+".png", 50*SCALE_X, 515*SCALE_Y, 3, -90)
                 p1_tex_prev.url = "assets/img/player1_step" + str(game.p1_skin) + ".png"
                 p1_skin_display.content = "Skin " + str(int(game.p1_skin))
                 p1_tex_prev.image_update()
@@ -416,7 +415,7 @@ while running :
                 else:
                     game.p1_skin -= 1
                 pick2_sfx.play()
-                game.player1 = Player(game, "player1", "assets/img/player1_step"+str(game.p1_skin)+".png", 50, 515, 3, -90)
+                game.player1 = Player(game, "player1", "assets/img/player1_step"+str(game.p1_skin)+".png", 50*SCALE_X, 515*SCALE_Y, 3, -90)
                 p1_tex_prev.url = "assets/img/player1_step" + str(game.p1_skin) + ".png"
                 p1_skin_display.content = "Skin " + str(int(game.p1_skin))
                 p1_tex_prev.image_update()
@@ -427,7 +426,7 @@ while running :
                 else:
                     game.p2_skin += 1
                 pick2_sfx.play()
-                game.player2 = Player(game, "player2", "assets/img/player2_step"+str(game.p2_skin)+".png", 1795, 515, 3, 90)
+                game.player2 = Player(game, "player2", "assets/img/player2_step"+str(game.p2_skin)+".png", 1795*SCALE_X, 515*SCALE_Y, 3, 90)
                 p2_tex_prev.url = "assets/img/player2_step" + str(game.p2_skin) + ".png"
                 p2_skin_display.content = "Skin " + str(int(game.p2_skin))
                 p2_tex_prev.image_update()
@@ -438,7 +437,7 @@ while running :
                 else:
                     game.p2_skin -= 1
                 pick2_sfx.play()
-                game.player2 = Player(game, "player2", "assets/img/player2_step"+str(game.p2_skin)+".png", 1795, 515, 3, 90)
+                game.player2 = Player(game, "player2", "assets/img/player2_step"+str(game.p2_skin)+".png", 1795*SCALE_X, 515*SCALE_Y, 3, 90)
                 p2_tex_prev.url = "assets/img/player2_step" + str(game.p2_skin) + ".png"
                 p2_skin_display.content = "Skin " + str(int(game.p2_skin))
                 p2_tex_prev.image_update()

@@ -51,8 +51,8 @@ class Game():
         self.p2_name = "player2"                                                                                #Name du tank2
 
         #Génération des Tanks
-        self.player1 = Player(self, self.p1_name, "assets/img/player1_step"+str(self.p1_skin)+".png", 50, 515, SPEED, -90)      #Génération du tank1
-        self.player2 = Player(self, self.p1_name, "assets/img/player2_step"+str(self.p2_skin)+".png", 1795, 515, SPEED, 90)     #Génération du tank2
+        self.player1 = Player(self, self.p1_name, "assets/img/player1_step"+str(self.p1_skin)+".png", 50*SCALE_X, 515*SCALE_Y, SPEED, -90)      #Génération du tank1
+        self.player2 = Player(self, self.p1_name, "assets/img/player2_step"+str(self.p2_skin)+".png", 1795*SCALE_X, 515*SCALE_Y, SPEED, 90)     #Génération du tank2
         self.pressed_keys = {}                                                                                  #dictionnaire de toutes les touches pressées
         self.screen = screen                                                                                    #"Stockage" de l'écran
         self.n = 0                                                                                              #Variable int
@@ -77,16 +77,16 @@ class Game():
 
         #importation images gagnantes
         self.player1_wins = pygame.image.load("assets/img/player1_wins.png").convert()                                 #Importation de l'image quand player1 gagne
-        self.player1_wins = pygame.transform.scale(self.player1_wins, (HEIGHT, WIDTH))                             #Changement de taille de l'image quand player1 gagne
+        self.player1_wins = pygame.transform.scale(self.player1_wins, (WIDTH, HEIGHT))                             #Changement de taille de l'image quand player1 gagne
         self.player2_wins = pygame.image.load("assets/img/player2_wins.png").convert()                                 #Importation de l'image quand player2 gagne
-        self.player2_wins = pygame.transform.scale(self.player2_wins, (HEIGHT, WIDTH))                             #Changement de taille de l'image quand player2 gagne
+        self.player2_wins = pygame.transform.scale(self.player2_wins, (WIDTH, HEIGHT))                             #Changement de taille de l'image quand player2 gagne
 
         self.obstacle = Obstacle('assets/img/obstacle0.png', (100, 100), 400, 400) #ICI !!                                #Implémentation d'un obstacle
 
-        self.bonus_durability = BonusMalus('Durability','assets/img/cle.png',(50,50), random.randint(600,800), random.randint(300,500),self)   #Implémentation d'un bonus de durabilité (durability)
-        self.bonus_speed = BonusMalus('Speed','assets/img/wheel.png',(50,50), random.randint(600,800), random.randint(300,500),self)           #Implémentation d'un bonus de vitesse (speed)
-        self.malus_slow = BonusMalus('Slow', 'assets/img/clou.png', (30,30), random.randint(600,800), random.randint(300,500), self)           #Implémentation d'un malus de vitesse (slow)
-        self.malus_boom = BonusMalus('Boom','assets/img/dynamite.png',(50,50),random.randint(600,800), random.randint(300,500), self)          #Implémentanion d'un malus de durabilité (boom)
+        self.bonus_durability = BonusMalus('Durability','assets/img/cle.png',(50,50), random.randint(600,800)*SCALE_X, random.randint(300,500)*SCALE_Y,self)   #Implémentation d'un bonus de durabilité (durability)
+        self.bonus_speed = BonusMalus('Speed','assets/img/wheel.png',(50,50), random.randint(600,800)*SCALE_X, random.randint(300,500)*SCALE_Y,self)           #Implémentation d'un bonus de vitesse (speed)
+        self.malus_slow = BonusMalus('Slow', 'assets/img/clou.png', (30,30), random.randint(600,800)*SCALE_X, random.randint(300,500)*SCALE_Y, self)           #Implémentation d'un malus de vitesse (slow)
+        self.malus_boom = BonusMalus('Boom','assets/img/dynamite.png',(50,50),random.randint(600,800)*SCALE_X, random.randint(300,500)*SCALE_Y, self)          #Implémentanion d'un malus de durabilité (boom)
         self.temp = None                                                                                        #Variable temporaire 1
         self.temp2 = None                                                                                       #Variable temporaire 2
         self.temp3 = None                                                                                       #Variable temporaire 3
@@ -133,8 +133,8 @@ class Game():
         self.player1.durability = self.player1.max_durability   #Réinitialisation de la durabilité du tank1
         self.player2.durability = self.player2.max_durability   #Réinitialisation de la durabilité du tank2
 
-        self.player1 = Player(self, "player1", "assets/img/player1_step"+str(self.p1_skin)+".png", 50, 515, SPEED, -90)  #Repositionnement du tank1
-        self.player2 = Player(self, "player2", "assets/img/player2_step"+str(self.p2_skin)+".png", 1795, 515, SPEED, 90) #Repositionnement du tank2
+        self.player1 = Player(self, "player1", "assets/img/player1_step"+str(self.p1_skin)+".png", 50*SCALE_X, 515*SCALE_Y, SPEED, -90)  #Repositionnement du tank1
+        self.player2 = Player(self, "player2", "assets/img/player2_step"+str(self.p2_skin)+".png", 1795*SCALE_X, 515*SCALE_Y, SPEED, 90) #Repositionnement du tank2
 
         self.in_menu = True                                     #Modifie l'état du menu en 'True'
         self.is_playing = False                                 #Modifie l'état du jeu en 'False'
@@ -272,13 +272,13 @@ class Game():
         #Pour pas que le tank2 reste bloqué sur un bord de la fenêtre
         if self.ball.pos[1] < TAILLE_TANK / 2: 
             self.ball.pos[1] = TAILLE_TANK / 2
-        elif self.ball.pos[1] > WIDTH - TAILLE_TANK / 2 :
-            self.ball.pos[1] = WIDTH - TAILLE_TANK / 2
+        elif self.ball.pos[1] > HEIGHT - TAILLE_TANK / 2 :
+            self.ball.pos[1] = HEIGHT - TAILLE_TANK / 2
 
         elif self.ball.pos[0] < TAILLE_TANK / 2 : 
             self.ball.pos[0] = TAILLE_TANK / 2
-        elif self.ball.pos[0] > HEIGHT - TAILLE_TANK / 2:
-            self.ball.pos[0] = HEIGHT - TAILLE_TANK / 2
+        elif self.ball.pos[0] > WIDTH - TAILLE_TANK / 2:
+            self.ball.pos[0] = WIDTH - TAILLE_TANK / 2
         #################################################################
 
 
@@ -295,13 +295,13 @@ class Game():
         # Pour pas que le tank1 reste bloqué sur un bord de la fenêtre
         if self.player1.pos[1] < TAILLE_TANK / 2:
             self.player1.pos[1] = TAILLE_TANK / 2
-        elif self.player1.pos[1] > WIDTH - TAILLE_TANK / 2:
-            self.player1.pos[1] = WIDTH - TAILLE_TANK / 2
+        elif self.player1.pos[1] > HEIGHT - TAILLE_TANK / 2:
+            self.player1.pos[1] = HEIGHT - TAILLE_TANK / 2
 
         if self.player1.pos[0] < TAILLE_TANK / 2:
             self.player1.pos[0] = TAILLE_TANK / 2
-        elif self.player1.pos[0] > HEIGHT - TAILLE_TANK / 2:
-            self.player1.pos[0] = HEIGHT - TAILLE_TANK / 2
+        elif self.player1.pos[0] > WIDTH - TAILLE_TANK / 2:
+            self.player1.pos[0] = WIDTH - TAILLE_TANK / 2
         #################################################################
    
 
@@ -317,13 +317,13 @@ class Game():
         #Pour pas que le tank2 reste bloqué sur un bord de la fenêtre
         if self.player2.pos[1] < TAILLE_TANK / 2 : 
             self.player2.pos[1] = TAILLE_TANK / 2
-        elif self.player2.pos[1] > WIDTH - TAILLE_TANK / 2:
-            self.player2.pos[1] = WIDTH -TAILLE_TANK / 2
+        elif self.player2.pos[1] > HEIGHT - TAILLE_TANK / 2:
+            self.player2.pos[1] = HEIGHT -TAILLE_TANK / 2
 
         elif self.player2.pos[0] < TAILLE_TANK / 2 : 
             self.player2.pos[0] = TAILLE_TANK / 2
-        elif self.player2.pos[0] > HEIGHT - TAILLE_TANK / 2:
-            self.player2.pos[0] = HEIGHT - TAILLE_TANK / 2
+        elif self.player2.pos[0] > WIDTH - TAILLE_TANK / 2:
+            self.player2.pos[0] = WIDTH - TAILLE_TANK / 2
         #################################################################
        
 

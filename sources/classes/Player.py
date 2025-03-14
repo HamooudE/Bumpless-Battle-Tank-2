@@ -89,13 +89,13 @@ class Player(pygame.sprite.Sprite):                                             
             elif self.rect.x < 0  :
                 self.turn_x *= -1
                 pick2_sfx.play()
-            elif self.rect.x > HEIGHT - TAILLE_TANK-TAILLE_TANK / 8:
+            elif self.rect.x > WIDTH - TAILLE_TANK-TAILLE_TANK / 8:
                 self.turn_x *= -1
                 pick2_sfx.play()
             elif self.rect.y < 0 : 
                 self.turn_y *= -1
                 pick2_sfx.play()
-            elif self.rect.y > WIDTH - TAILLE_TANK-TAILLE_TANK / 8:
+            elif self.rect.y > HEIGHT - TAILLE_TANK-TAILLE_TANK / 8:
                 self.turn_y *= -1
                 pick2_sfx.play()
             self.vecteur = pygame.Vector2(-self.angle_save[0]*np.exp(self.bounce_force)*self.turn_x, -self.angle_save[1]*np.exp(self.bounce_force)*self.turn_y)
@@ -107,13 +107,13 @@ class Player(pygame.sprite.Sprite):                                             
             elif self.rect.x < 0 :
                 self.turn_x *= -1
                 pick2_sfx.play()
-            elif self.rect.x > HEIGHT - TAILLE_TANK-TAILLE_TANK / 8:
+            elif self.rect.x > WIDTH - TAILLE_TANK-TAILLE_TANK / 8:
                 self.turn_x *= -1
                 pick2_sfx.play()
             elif self.rect.y < 0 : 
                 self.turn_y *= -1
                 pick2_sfx.play()
-            elif self.rect.y > WIDTH - TAILLE_TANK-TAILLE_TANK / 8:
+            elif self.rect.y > HEIGHT - TAILLE_TANK-TAILLE_TANK / 8:
                 self.turn_y *= -1
                 pick2_sfx.play()
             self.vecteur = pygame.Vector2(-self.angle_save[0]*np.exp(self.bounce_force)*self.turn_x, self.angle_save[1]*np.exp(self.bounce_force)*self.turn_y)
